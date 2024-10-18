@@ -49,7 +49,7 @@ This repository utilizes the following programming languages:
 
 - Jupyter Notebook: Used for interactive code development and demonstration.
 - Python: The primary language for implementing the core logic of the graph-based RAG system.
-- SurQL: the SQL flavor of SurrealDB
+- SurrQL: the SQL flavor of SurrealDB
 
 ## Additional Notes
 
