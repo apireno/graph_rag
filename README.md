@@ -53,5 +53,5 @@ This repository utilizes the following programming languages:
 
 ## Additional Notes
 
-- **Microsoft/graphrag Repository:** This repository appears to be loosely based on the Microsoft/graphrag repository.
+- **Microsoft/graphrag Repository:** The notebook is loosely based on a larger repository microsoft/graphrag. The microsoft/graphrag repository provides a more comprehensive, modular graph-based RAG system. This notebook focuses specifically on the knowledge graph construction aspect.
   
