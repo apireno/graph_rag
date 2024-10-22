@@ -36,7 +36,37 @@ This notebook showcases how to implement and utilize the graph-based RAG system:
 - **Leveraging the Knowledge Graph**: This component likely demonstrates how to use the knowledge graph created by  "graph\_extractor.ipynb" to answer questions. 
 - **Question Answering**: The notebook illustrates how to query the RAG system with questions. The system then retrieves relevant information from the knowledge graph to generate comprehensive and contextually appropriate answers.
 
-### 3. "embedding_api.py" - A simple flask API that returns embeddings using the glove.6B.50d model
+### 3. SurrealDB - A multi model database that will store the knowledge graph and use vector search for retrieval
+
+The repository can be found here:
+https://github.com/surrealdb/surrealdb
+
+With detailed documentation here:
+
+https://surrealdb.com/
+
+Install SurrealDB:
+```console
+brew install surrealdb/tap/surreal
+
+```
+ Install on Linux
+```console
+curl --proto '=https' --tlsv1.2 -sSf https://install.surrealdb.com | sh
+
+```
+Install on Windows
+
+```console
+iwr https://windows.surrealdb.com -useb | iex
+```
+Starting the database:
+```console
+brew install surrealdb
+surreal start --allow-net --log none --user root --pass root --bind 0.0.0.0:8080 "rocksdb:///<path to your project>/db"       
+```
+
+### 4. "embedding_api.py" - A simple flask API that returns embeddings using the glove.6B.50d model
 
 This API endpoint has one input (via GET or POST) called "text". It returns an array of floats[50]
 
