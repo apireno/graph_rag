@@ -39,13 +39,14 @@ This notebook showcases how to implement and utilize the graph-based RAG system:
 ### 3. SurrealDB - A multi model database that will store the knowledge graph and use vector search for retrieval
 
 The repository can be found here:
+
 https://github.com/surrealdb/surrealdb
 
 With detailed documentation here:
 
 https://surrealdb.com/
 
-Install SurrealDB:
+Install on MacOS:
 ```console
 brew install surrealdb/tap/surreal
 
