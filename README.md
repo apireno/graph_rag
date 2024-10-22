@@ -40,10 +40,14 @@ This notebook showcases how to implement and utilize the graph-based RAG system:
 
 This API endpoint has one input (via GET or POST) called "text". It returns an array of floats[50]
 
-Run it with this command in a terminal:
+Start the service by running this command in a terminal:
 ```console
-env FLASK_APP=embedding_api.py python -m flask --app embedding_api --debug run         
+env FLASK_APP=embedding_api/embedding_api.py python -m flask --app embedding_api --debug run         
 ```
+
+by default the service will run on http://127.0.0.1:5000/
+
+You can test it by entering this in your browser http://127.0.0.1:5000/?text=some text to embed
 
 ## Getting Started
 
