@@ -34,7 +34,16 @@ This notebook guides you through the process of building a knowledge graph from 
 This notebook showcases how to implement and utilize the graph-based RAG system:
 
 - **Leveraging the Knowledge Graph**: This component likely demonstrates how to use the knowledge graph created by  "graph\_extractor.ipynb" to answer questions. 
-- **Question Answering**: The notebook illustrates how to query the RAG system with questions. The system then retrieves relevant information from the knowledge graph to generate comprehensive and contextually appropriate answers. 
+- **Question Answering**: The notebook illustrates how to query the RAG system with questions. The system then retrieves relevant information from the knowledge graph to generate comprehensive and contextually appropriate answers.
+
+### 3. "embedding_api.py" - A simple flask API that returns embeddings using the glove.6B.50d model
+
+This API endpoint has one input (via GET or POST) called "text". It returns an array of floats[50]
+
+Run it with this command in a terminal:
+```console
+env FLASK_APP=embedding_api.py python -m flask --app embedding_api --debug run         
+```
 
 ## Getting Started
 
