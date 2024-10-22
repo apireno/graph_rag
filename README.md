@@ -47,7 +47,7 @@ env FLASK_APP=embedding_api/embedding_api.py python -m flask --app embedding_api
 
 by default the service will run on http://127.0.0.1:5000/
 
-You can test it by entering this in your browser http://127.0.0.1:5000/?text=some text to embed
+You can test it by entering this in your browser http://127.0.0.1:5000/?text=some%20text%20to%20embed
 
 ## Getting Started
 
