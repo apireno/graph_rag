@@ -103,8 +103,8 @@ Text: {input_text}
 ######################
 Output:"""
 
-CONTINUE_PROMPT = "MANY entities and relationships were missed in the last extraction. Remember to ONLY emit entities that match any of the previously extracted types. Add them below using the same format:\n"
-LOOP_PROMPT = "It appears some entities and relationships may have still been missed.  Answer YES | NO if there are still entities or relationships that need to be added.\n"
+CONTINUE_PROMPT = "MANY entities and relationships were missed in the last extraction. Try to identify relationships that may be weaker or were not apparent at your first attempt. Make sure to have at least one relationship for each entity even if it is to itself. AND make sure to add any entities mentioned in relationships. Remember to ONLY emit entities that match any of the previously extracted types and do NOT extract the entities from the examples sections. Add them below using the same format. Do not add any explanatory text outside of the instructions you were given as the OUTPUT. If you cannot find any more relationships after trying very hard then return only the completion delimiter: {completion_delimiter}.\n"
+LOOP_PROMPT = "It appears some entities and relationships may have still been missed.  Answer YES | NO if there are still entities or relationships that need to be added. ONLY answer with 'YES' or 'NO' and nothing else!\n"
 
 
 
