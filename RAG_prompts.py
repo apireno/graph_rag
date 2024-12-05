@@ -18,7 +18,7 @@ You are a researcher who is providing answers to a question for you client based
 
 <knowledge graph>
 {knowledge_graph}
-</knowlede graph>
+</knowledge graph>
 
 <question>
 {question}
