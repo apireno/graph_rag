@@ -6,7 +6,9 @@
 
 GRAPH_EXTRACTION_PROMPT = """
 -Goal-
-Given a text document that is potentially relevant to this activity and a list of entity types, identify all entities of those types from the text and all relationships among the identified entities.
+Given the file uploaded that is relevant to this activity and a list of entity types, identify all entities of those types from the text and all relationships among the identified entities.
+
+DO NOT add any explanatory text outside of the instructions below in the specific format described.
  
 -Steps-
 1. Identify all entities. For each identified entity, extract the following information:
@@ -14,6 +16,7 @@ Given a text document that is potentially relevant to this activity and a list o
 - entity_type: One of the following types: [{entity_types}]
 - entity_description: Comprehensive description of the entity's attributes and activities
 Format each entity as CREATE <entity_type>:`<entity_name>` SET description="<entity_description>"
+
  
 2. From the entities identified in step 1, identify all pairs of (source_entity, target_entity) that are *clearly related* to each other.
 For each pair of related entities, extract the following information:
@@ -25,7 +28,9 @@ For each pair of related entities, extract the following information:
  
 3. Return output in English as a single list of all the entities and relationships identified in steps 1 and 2. Use **{record_delimiter}** as the list delimiter.
  
-4. When finished, output {completion_delimiter}
+4. When finished, output the completion delimiter: {completion_delimiter}
+
+Additional considerations: Make sure to identify all cross-relationships between the multiple types of entities as well as relationships between entities of the same type. Take special note of any hierarchal representations within the relationships. When in doubt be generous and add extra relationships but indicate the weakness with the strength score.
  
 ######################
 -Examples-
@@ -99,11 +104,11 @@ RELATE PERSON:`DURKE BATAGLANI`->{relation_type}->GEO:`FIRUZABAD` SET descriptio
 -Real Data-
 ######################
 Entity_types: {entity_types}
-Text: {input_text}
 ######################
 Output:"""
 
-CONTINUE_PROMPT = "MANY entities and relationships were missed in the last extraction. Try to identify relationships that may be weaker or were not apparent at your first attempt. Make sure to have at least one relationship for each entity even if it is to itself. AND make sure to add any entities mentioned in relationships. Remember to ONLY emit entities that match any of the previously extracted types and do NOT extract the entities from the examples sections. Add them below using the same format. Do not add any explanatory text outside of the instructions you were given as the OUTPUT. If you cannot find any more relationships after trying very hard then return only the completion delimiter: {completion_delimiter}.\n"
+CONTINUE_PROMPT = """MANY entities and relationships were missed in the last extraction. Try to identify relationships that may be weaker or were not apparent at your first attempt. Make sure to have at least one relationship for each entity even if it is to itself. AND make sure to add any entities mentioned in relationships. Remember to ONLY emit entities that match any of the previously extracted types and do NOT extract the entities from the examples sections. Add them below using the same format. Do not add any explanatory text outside of the instructions you were given as the OUTPUT. And remember to ALWAYS end your response with the completion delimiter: {completion_delimiter}\n"""
+
 LOOP_PROMPT = "It appears some entities and relationships may have still been missed.  Answer YES | NO if there are still entities or relationships that need to be added. ONLY answer with 'YES' or 'NO' and nothing else!\n"
 
 

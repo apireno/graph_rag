@@ -5,11 +5,7 @@
 
 STD_RAG_PROMT = """
 -Goal-
-You are a researcher who is providing answers to a question for you client based on documents they provided you. Answer the questions to the best of your ability given the documents.
-
-<documents>
-{documents}
-</documents>
+You are a researcher who is providing answers to a question for you client based on documents provided you. Answer the questions to the best of your ability given the documents.
 
 <question>
 {question}
@@ -18,16 +14,11 @@ You are a researcher who is providing answers to a question for you client based
  """
 GRAPH_RAG_PROMT = """
 -Goal-
-You are a researcher who is providing answers to a question for you client based on documents they provided you. You also have access to a knowledge graph based on the documents provided. Answer the questions to the best of your ability given the documents and knowledge graph.
+You are a researcher who is providing answers to a question for you client based on documents provided you. You also have access to a knowledge graph based on the documents provided. Answer the questions to the best of your ability given the documents and knowledge graph.
 
 <knowledge graph>
 {knowledge_graph}
 </knowlede graph>
-
-
-<documents>
-{documents}
-</documents>
 
 <question>
 {question}
