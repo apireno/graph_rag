@@ -1,0 +1,10 @@
+[0-9]*/
+__pycache__/
+.github/
+.ipynb_checkpoints/
+rag*/
+db/
+
+db/000026.log
+db/000026.log
+db/CURRENT
