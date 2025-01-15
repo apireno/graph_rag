@@ -66,22 +66,16 @@ Starting the database:
 brew install surrealdb
 surreal start --allow-net --log none --user root --pass root --bind 0.0.0.0:8080 "rocksdb:///<path to your project>/db"       
 ```
+### 4. An embedding function to calculate your embeddings
 
-### 4. "embedding_api.py" - A simple flask API that returns embeddings using the glove.6B.50d model
+This repo explains how to upload a pre-trained model into a surrealDB database
 
-This API endpoint has one input (via GET or POST) called "text". It returns an array of floats[50]
+https://github.com/apireno/surrealDB_embedding_model
 
-Download the model here  https://www.kaggle.com/datasets/watts2/glove6b50dtxt and unpack it into the directory embedding_api
+For this example, we leverage a pre-trained GloVe model based on the research at Stanford (https://nlp.stanford.edu/projects/glove/).
 
-Start the service by running this command in a terminal:
-```console
-cd embedding_api
-env FLASK_APP=embedding_api.py python -m flask --app embedding_api --debug run         
-```
+Download the pre-trained glove.6B.50d model here https://www.kaggle.com/datasets/watts2/glove6b50dtxt and unpack it into the directory embedding_api
 
-by default the service will run on http://127.0.0.1:5000/
-
-You can test it by entering this in your browser http://127.0.0.1:5000/?text=some%20text%20to%20embed
 
 ## Getting Started
 
