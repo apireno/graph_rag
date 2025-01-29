@@ -15,28 +15,13 @@ SurrealDB is a multi-model database that offers both graph and vector capabiliti
 
 This demonstration leverages SurrealDB's features in the following ways:
 
-1. **"graph\_extractor.ipynb"**: This notebook likely uses SurrealDB to store the extracted knowledge graph. Entities are stored as nodes, their relationships as edges, and potentially, vector embeddings of text are associated with nodes for semantic search.
-2. **"graphRAG.ipynb"**:  This notebook uses the knowledge graph stored in SurrealDB to answer questions.  It likely performs semantic searches using vector embeddings to find relevant information within the knowledge graph. The graph structure is then traversed to retrieve connected entities and provide contextually rich answers.
+1. **"graph_extractor.ipynb"**: This notebook likely uses SurrealDB to store the extracted knowledge graph. Entities are stored as nodes, their relationships as edges, and potentially, vector embeddings of text are associated with nodes for semantic search.
+2. **"chunking_and_embedding.ipynb"**: This notebook likely chunks the document for reduction of the input prompt tokens. The chunks are stored in SurrealDB with embeddings for semantic retreival. This is only needed for the Together AI hosted model due to context window restrictions.
+3. **"gemini_graphRAG.ipynb"**:  This notebook uses the knowledge graph stored in SurrealDB and Gemini to answer questions.  It performs semantic searches using vector embeddings to find relevant information within the knowledge graph. The graph structure is then traversed to retrieve connected entities and provide contextually rich answers. 
+4. **"deepseek_graphRAG.ipynb"**:  This notebook uses the knowledge graph stored in SurrealDB and a locally hosted deepseek R1 model to answer questions.  It performs semantic searches using vector embeddings to find relevant information within the knowledge graph. The graph structure is then traversed to retrieve connected entities and provide contextually rich answers. 
+5. **"deepseek_togetherai_graphRAG.ipynb"**:  This notebook uses the knowledge graph stored in SurrealDB and a together AI (https://www.together.ai/) hosted deepseek R1 model to answer questions.  It performs semantic searches using vector embeddings to find relevant information within the knowledge graph. Due to context window restrictions it also uses chunking to limit the size of the tokens passed for the document text. The graph structure is then traversed to retrieve connected entities and provide contextually rich answers. 
 
-## Key Components
-
-This repository features two Jupyter notebooks:
-
-### 1. "graph\_extractor.ipynb" - Knowledge Graph Construction
-
-This notebook guides you through the process of building a knowledge graph from unstructured text data. The notebook likely covers:
-
-- **Entity Recognition**: Identifying and extracting key entities like people, places, organizations, etc. 
-- **Relation Extraction**: Discovering relationships between the identified entities. These relations form the edges of the knowledge graph, connecting the entities in a meaningful way.
-
-### 2. "graphRAG.ipynb" - Building and Utilizing the RAG System
-
-This notebook showcases how to implement and utilize the graph-based RAG system:
-
-- **Leveraging the Knowledge Graph**: This component likely demonstrates how to use the knowledge graph created by  "graph\_extractor.ipynb" to answer questions. 
-- **Question Answering**: The notebook illustrates how to query the RAG system with questions. The system then retrieves relevant information from the knowledge graph to generate comprehensive and contextually appropriate answers.
-
-### 3. SurrealDB - A multi model database that will store the knowledge graph and use vector search for retrieval
+### Installing SurrealDB - A multi model database that will store the knowledge graph and use vector search for retrieval
 
 The repository can be found here:
 
@@ -66,23 +51,14 @@ Starting the database:
 brew install surrealdb
 surreal start --allow-net --log none --user root --pass root --bind 0.0.0.0:8080 "rocksdb:///<path to your project>/db"       
 ```
-### 4. An embedding function to calculate your embeddings
-
-This repo explains how to upload a pre-trained model into a surrealDB database
-
-https://github.com/apireno/surrealDB_embedding_model
-
-For this example, we leverage a pre-trained GloVe model based on the research at Stanford (https://nlp.stanford.edu/projects/glove/).
-
-Download the pre-trained glove.6B.50d model here https://www.kaggle.com/datasets/watts2/glove6b50dtxt
-
 
 ## Getting Started
 
 To understand and use the code in this repository, follow these steps:
 
-1. **Execute "graph\_extractor.ipynb":** Begin by running this notebook to build the knowledge graph, which is a prerequisite for the RAG system.
-2. **Execute "graphRAG.ipynb":**  After successfully creating the knowledge graph, proceed to this notebook to see how the RAG system is implemented and how it utilizes the knowledge graph for question answering.
+1. **Execute "graph_extractor.ipynb":** Begin by running this notebook to build the knowledge graph, which is a prerequisite for the RAG system.
+2. **Execute "chunking_and_embedding.ipynb":**  After successfully creating the knowledge graph, proceed to this notebook to set up the chunking table.
+2. **Execute the RAG example notebooks in no particular order:**  After successfully creating the knowledge graph, proceed to these notebooks to see how the RAG system is implemented and how it utilizes the knowledge graph for question answering.
 
 ## Languages Used 
 
