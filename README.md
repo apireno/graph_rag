@@ -52,6 +52,12 @@ brew install surrealdb
 surreal start --allow-net --log none --user root --pass root --bind 0.0.0.0:8080 "rocksdb:///<path to your project>/db"       
 ```
 
+Install the python SDK
+
+```console
+pip install surrealdb
+```
+
 ## Getting Started
 
 To understand and use the code in this repository, follow these steps:
