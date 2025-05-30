@@ -6,7 +6,7 @@
 
 GRAPH_EXTRACTION_PROMPT = """
 -Goal-
-Given the file uploaded that is relevant to this activity and a list of entity types, identify all entities of those types from the text and all relationships among the identified entities.
+Given the file uploaded that is relevant to this activity and a list of entity types, identify all entities of those types from the text and all relationships among the identified entities. Please be exhaustive by extracting implicit relationships and implied entities including abstract entities and relationships.
 
 DO NOT add any explanatory text outside of the instructions below in the specific format described.
  
@@ -107,9 +107,9 @@ Entity_types: {entity_types}
 ######################
 Output:"""
 
-CONTINUE_PROMPT = """MANY entities and relationships were missed in the last extraction. Try to identify relationships that may be weaker or were not apparent at your first attempt. Make sure to have at least one relationship for each entity even if it is to itself. AND make sure to add any entities mentioned in relationships. Remember to ONLY emit entities that match any of the previously extracted types and do NOT extract the entities from the examples sections. Add them below using the same format. Do not add any explanatory text outside of the instructions you were given as the OUTPUT. And remember to ALWAYS end your response with the completion delimiter: {completion_delimiter}\n"""
+CONTINUE_PROMPT = """MANY entities and relationships were missed in the last extraction. Try to identify relationships that may be weaker or were not apparent at your first attempt. Make sure to have at least one relationship for each entity even if it is to itself. AND make sure to add any entities mentioned in relationships. AND be exhaustive; think about implicit relationships, implied entities and abstract entities and relationships. Remember to ONLY emit entities that match any of the previously extracted types and do NOT extract the entities from the examples sections. Add them below using the same format. Do not add any explanatory text outside of the instructions you were given as the OUTPUT. And remember to ALWAYS end your response with the completion delimiter: {completion_delimiter}\n"""
 
-LOOP_PROMPT = "It appears some entities and relationships may have still been missed.  Answer YES | NO if there are still entities or relationships that need to be added. ONLY answer with 'YES' or 'NO' and nothing else!\n"
+LOOP_PROMPT = "It appears some entities and relationships may have still been missed, especially weaker or were not apparent at your first attempt. Please take another look and find less obvious relationships. Answer YES | NO if there are still entities or relationships that need to be added. ONLY answer with 'YES' or 'NO' and nothing else!\n"
 
 
 
